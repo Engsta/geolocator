@@ -2,7 +2,11 @@ const express = require('express'); // Import Express
 const Datastore = require('nedb');
 
 const app = express(); // instantiate Express
-app.listen(9999,() => console.log('listening at 9999')); //Spin up the server to listen at port 3000
+const port = process.env.port || 9999;
+
+// app.listen(9999,() => console.log('listening at 9999')); //Spin up the server to listen at port 3000
+app.listen(port,() =>
+    console.log(`Starting server at ${port}`));
 app.use(express.static('public')); //Serve up static files to our server
 app.use(express.json({limit:'1mb'})); // Only take posts with less than 1mb
 
